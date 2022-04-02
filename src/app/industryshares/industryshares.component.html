@@ -1,0 +1,31 @@
+  
+          <div class="row" id="top-shares" 
+      role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <div class="col-md-7 " >
+        <table class="table">
+            
+            <tr *ngFor="let stock of data">
+             
+             <td> <p>{{stock.Symbol}}</p> </td>
+              <td></td>
+              <td>
+                <p>{{stock.LastRate}}</p>      
+                  
+                  <p [style.color]="stock.ChgPcnt>0? 'green': 'red'">{{stock.Chg}} ({{stock.ChgPcnt.toFixed(2)}})%</p>
+                
+              </td>
+              
+             
+            </tr>
+        </table>
+    </div>
+       
+
+        </div>
+    
+    
+    
+    
+   
+
+

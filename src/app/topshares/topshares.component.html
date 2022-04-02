@@ -1,0 +1,80 @@
+<div fxLayout="row wrap" fxLayoutGap="30px grid">
+  <div fxFlex.md="90%" fxFlex.lg="90%" fxFlex.xl="90%" fxFlex.sm="100%">
+    
+      
+      
+        
+      <mat-card>
+        <mat-card-content>
+              <mat-tab-group mat-align-tabs="start">
+                <mat-tab label="Nifty 50">
+                  <div class="row" id="top-shares" 
+          role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="col-md-7 " >
+                <table class="table">
+                  
+                  <div  class="card" *ngIf="isSucessAlert">
+                    <div class="card-body">
+
+                      <div *ngFor="let alerts of alerts"
+                      class="alert {{ alerts.background }} {{ alerts.color }} d-flex fs-14 align-items-center rounded mb-16"
+                      role="alert">
+                      <i-feather name="{{ alerts.icon }}" class="{{ alerts.iconColor }} feather-base me-12"></i-feather>
+                      {{ alerts.message }}
+                    </div>
+                
+                  </div>
+                </div>
+
+                    <tr *ngFor="let stock of data">
+                     
+                     <td> <p>{{stock.Symbol}}</p> </td>
+                      <td><button type="button" (click)="addToWatchlist(stock.Symbol)" class="btn " title="Add toWatchlist" >
+                        <h3><b>+</b></h3>
+                      </button>
+                      
+                       
+                      </td>
+                      <td colspan="3">
+                        <p>{{stock.LastRate}}</p>      
+                          
+                          <p [style.color]="stock.ChgPcnt>0? 'green': 'red'">{{stock.Chg}} ({{stock.ChgPcnt.toFixed(2)}})%</p>
+                        
+                      </td>
+                      <td><button type="button" class="btn btn-success">Buy</button></td>
+                      <td><button type="button" class="btn btn-danger">Sell</button></td>
+                     
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+
+
+                </mat-tab>
+                
+    <mat-tab label="My Watchlist">
+      <div class="row" id="My-watchlist" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+           <app-watchlist></app-watchlist>
+      </div>
+    </mat-tab>
+    <mat-tab label="Industry Shares"><app-industryshares></app-industryshares></mat-tab>
+              </mat-tab-group>
+
+           
+            <!-- <div class="col-mod-4" style="width:500px;border-radius:10px;padding-left:20px">
+            <app-stock-chart></app-stock-chart>
+            </div> -->
+      
+        
+        
+          </mat-card-content>
+        </mat-card>
+
+  </div>
+</div>
+
+<div fxFlex.md="50%" class="overflow-x-hidden" fxFlex.lg="50%" fxFlex.xl="50%" fxFlex.sm="100%">
+    <app-stock-chart></app-stock-chart>
+
+</div>
