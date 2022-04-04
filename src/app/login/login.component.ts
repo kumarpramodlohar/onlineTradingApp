@@ -42,7 +42,9 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveRefreshToken(data.refresh_token);
         this.isLoginFailed = false;
 
+        if (localStorage.getItem("token") != null) {
         this.isLoggedIn = true;
+        }
         this.router.navigateByUrl('/fullcomponents');
         this.roles = this.tokenStorage.getRoles();
         sessionStorage.setItem('loggedUser', username);
@@ -63,5 +65,6 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+    this.isLoggedIn = false;
   }
 }

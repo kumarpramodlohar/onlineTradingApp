@@ -9,13 +9,13 @@ import { Observable,interval } from "rxjs";
 })
 
 export class StockDataService{
-private API_URL ="http://localhost:8080/live/market-feed";
-private INDUSTRY_URL = "http://localhost:8080/live/industry-feed";
-private STOCK_NAME_URL = "http://localhost:8080/live/stockName";
+private API_URL ="http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/market-feed";
+private INDUSTRY_URL = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/industry-feed";
+private STOCK_NAME_URL = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/stockName";
 
-private USER_WATCHLIST_ADD = "http://localhost:8080/api";
+private USER_WATCHLIST_ADD = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/api";
 
-private LIVE_URL = "http://localhost:8080/live/";
+private LIVE_URL = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/";
 
 private httpOptions = {
     //headers: new HttpHeaders({ 'Content-Type': 'application/json' })

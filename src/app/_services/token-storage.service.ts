@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 const TOKEN_KEY = 'auth-token';
 const REFRESHTOKEN_KEY = 'auth-refreshtoken';
@@ -12,10 +13,11 @@ const helper = new JwtHelperService();
 })
 export class TokenStorageService {
   //decodeToken: any;
-  constructor() { }
+  constructor(private router: Router) { }
 
   signOut(): void {
-    window.sessionStorage.clear();
+    localStorage.removeItem("token");
+    this.router.navigateByUrl("/login");
   }
 
   public saveToken(token: string): void {

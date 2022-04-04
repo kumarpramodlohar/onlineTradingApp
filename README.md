@@ -50,7 +50,7 @@ export class AuthInterceptor implements HttpInterceptor {
 ...
 ```
 
-Run `ng serve --port 8081` for a dev server. Navigate to `http://localhost:8081/`.
+Run `ng serve --port 8081` for a dev server. Navigate to `http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8081/`.
 
 ## More practice
 > [Angular JWT Refresh Token example with Http Interceptor](https://www.bezkoder.com/angular-12-refresh-token/)
