@@ -30,6 +30,8 @@ const routes: Routes = [
     
   children: [
   {path:"", redirectTo:"/login", pathMatch:"full"},
+  {path:"", redirectTo:"/login", pathMatch:"full"},
+  {path:"**", redirectTo:"/login", pathMatch:"full"},
   { path:'topshares',component:TopsharesComponent},
   { path:'industryshares',component:IndustrysharesComponent},
   { path:'Chart',component:FinancialChartMultipleDataComponent},

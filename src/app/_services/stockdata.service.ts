@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient,HttpHeaders  } from "@angular/common/http";
 import { Observable,interval } from "rxjs";
+import { environment } from '../../environments/environment';
 
 
 
@@ -9,13 +10,15 @@ import { Observable,interval } from "rxjs";
 })
 
 export class StockDataService{
-private API_URL ="http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/market-feed";
-private INDUSTRY_URL = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/industry-feed";
-private STOCK_NAME_URL = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/stockName";
 
-private USER_WATCHLIST_ADD = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/api";
+private API_URL =environment.API_URL;
+//"http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/market-feed";
+//private INDUSTRY_URL = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/industry-feed";
+//private STOCK_NAME_URL = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/stockName";
 
-private LIVE_URL = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/";
+//private USER_WATCHLIST_ADD = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/api";
+
+//private LIVE_URL = "http://ec2-52-38-131-69.us-west-2.compute.amazonaws.com:8080/live/";
 
 private httpOptions = {
     //headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -33,18 +36,18 @@ private httpOptions = {
 
     getStockData(): Observable<any>{
         
-        return this.http.get(this.API_URL);
+        return this.http.get(this.API_URL+'/live/market-feed');
         
     }
 
     getIndustryData(): Observable<any>{
         
-        return this.http.get(this.INDUSTRY_URL);
+        return this.http.get(this.API_URL+'/live/industry-feed');
         
     }
 
     getStockNameData() : Observable<any>{
-        return this.http.get(this.STOCK_NAME_URL);
+        return this.http.get(this.API_URL+'/live/stockName');
     }
 
     addToUserWatchList(username : any, symbol : string,watch_flag : string ): Observable<any>{
@@ -72,7 +75,7 @@ private httpOptions = {
             
             console.log(config);
 
-          return this.http.post(this.USER_WATCHLIST_ADD +'/addWatchlist', JSON.stringify(bodyReq),config);
+          return this.http.post(this.API_URL +'/api/addWatchlist', JSON.stringify(bodyReq),config);
           
     }
 
@@ -89,7 +92,7 @@ private httpOptions = {
   
       };
 
-        return this.http.get(this.USER_WATCHLIST_ADD+'/getWatchlist/'+username,config);
+        return this.http.get(this.API_URL+'/api/getWatchlist/'+username,config);
     }
 
 }
