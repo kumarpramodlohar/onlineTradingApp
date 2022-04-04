@@ -42,6 +42,7 @@ import { FullComponentComponent } from './layouts/full/full-component/full-compo
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { DemoFlexyModule } from './demo-flexy-module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import { DemoFlexyModule } from './demo-flexy-module';
    // SidebarComponent
  
   ],
-  providers: [authInterceptorProviders,FinancialDataService],
+  providers: [authInterceptorProviders,FinancialDataService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
   entryComponents: [],
   schemas: []
